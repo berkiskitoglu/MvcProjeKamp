@@ -1,27 +1,28 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Category>
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h3> Mvc Kamp Tablo Örneği - Kategori</h3>
-
+<br />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <table class="table table-bordered">
     <tr>
-        <th>Kategori ID</th>
+        <th>#</th>
         <th>Kategori Ad</th>
-        <th>Açıklama</th>
-        <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Başlıklar</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Eğitim</td>
-        <td>Açıklama Yaptık</td>
-        <td>True</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Spor</td>
-        <td>Açıklama Yapıldı</td>
-        <td>True</td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="" class="btn btn-success">Başlıklar</a></td>
+        </tr>
+    }
 </table>
+<a href="/Category/AddCategory" class="btn btn-info">Yeni Kategori</a>

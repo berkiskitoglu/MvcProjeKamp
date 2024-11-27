@@ -1,0 +1,92 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Contacts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Yazarlar Sayfası</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                              <div class="card-header text-muted border-bottom-0">
+                                  @item.WriterTitle
+                              </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h2 class="lead">
+                                                <b>
+                                                    @item.WriterName @item.WriterSurname
+                                                </b>
+                                            </h2>
+                                            <p class="text-muted text-sm"><b>Hakkında: </b> @item.WriterAbout.</p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-mail-bulk"></i></span> Mail: @item.WriterMail</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <img src="@item.WriterImage" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments">Yazarın Başlıkları</i>
+                                        </a>
+                                        <a href="/Writer/EditWriter/@item.WriterID" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i>Profili Düzenle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <script src="~/AdminLTE-3.0.4/pluginsplugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/pluginsplugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/pluginsdist/js/adminlte.min.js"></script>
+</body>
+</html>
+
